@@ -30,7 +30,7 @@ def get_human_pdb_protein_ids():
 #get_human_pdb_protein_ids()
 
 
-def get_protein_with_short_peptide_info(num_of_protein_to_check,length_of_short_peptide):
+def get_protein_with_short_peptide(num_of_protein_to_check,length_of_short_peptide,resolution_limit):
 	protein_inst_list = []
 	c1 = Cache(CACHE_FILE)
 	base_url = 'https://www.rcsb.org/pdb/rest/describeMol?structureId='
@@ -66,21 +66,26 @@ def get_protein_with_short_peptide_info(num_of_protein_to_check,length_of_short_
 
 		try:
 			polymer_description = soup.find('macromolecule')['name']
+			resolution = soup_res.find('pdb')['resolution']
 			for el in molecular_weight_and_length_inst_lst:
-				if int(el['length']) < int(length_of_short_peptide):
-					name = soup.find('structureid')['id']
-					molecular_weight = el['weight']
-					polymer_length = el['length']
-					resolution = soup_res.find('pdb')['resolution']
-					polymer_description = soup.find('macromolecule')['name']
-					protein_inst = Protein(name,molecular_weight,polymer_length,resolution,polymer_description)
-					protein_inst_list.append(protein_inst)
+				if int(el['length']) <= int(length_of_short_peptide):
+					if float(resolution) <= float(resolution_limit):
+						name = soup.find('structureid')['id']
+						molecular_weight = el['weight']
+						polymer_length = el['length']
+						resolution = soup_res.find('pdb')['resolution']
+						polymer_description = soup.find('macromolecule')['name']
+						protein_inst = Protein(name,molecular_weight,polymer_length,resolution,polymer_description)
+						protein_inst_list.append(protein_inst)
+					else:
+						pass
 				else:
 					pass
 		except Exception as inst:
-			print(inst)
+			#print(inst,id_el)
+			pass
 
 	return protein_inst_list
 
-for el in get_protein_with_short_peptide_info(1000,10):
+for el in get_protein_with_short_peptide(1000,10,2):
 	print(el)
