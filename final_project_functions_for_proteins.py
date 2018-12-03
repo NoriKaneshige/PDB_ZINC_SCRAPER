@@ -12,10 +12,10 @@ def get_human_pdb_protein_ids():
 	c1 = Cache(CACHE_FILE)
 	unique_url = 'http://www.rcsb.org/pdb/resultsV2/sids.jsp?qrid=3BB4340C'
 	if unique_url in c1.cache_diction:
-		print("\n------------------------------\nPDB ID Data in cache\n------------------------------")
+		#print("\n------------------------------\nPDB ID Data in cache\n------------------------------")
 		resp = c1.cache_diction.get(unique_url)
 	else:
-		print("\n---------------------------------------------\nPDB ID Data NOT in cache, so making requests!\n---------------------------------------------")
+		#print("\n---------------------------------------------\nPDB ID Data NOT in cache, so making requests!\n---------------------------------------------")
 		resp = requests.get(unique_url).text
 		#obj = json.loads(resp)
 		#Here, I did not make json data, just stored text data, is this OK?
@@ -30,32 +30,57 @@ def get_human_pdb_protein_ids():
 #get_human_pdb_protein_ids()
 
 
-def get_protein_info(num_of_protein):
+def get_protein_with_short_peptide_info(num_of_protein_to_check,length_of_short_peptide):
 	protein_inst_list = []
 	c1 = Cache(CACHE_FILE)
 	base_url = 'https://www.rcsb.org/pdb/rest/describeMol?structureId='
-	for id_el in get_human_pdb_protein_ids()[:num_of_protein]:
+	base_url_for_resolution = 'https://www.rcsb.org/pdb/rest/describePDB?structureId='
+	for id_el in get_human_pdb_protein_ids()[:num_of_protein_to_check]:
+
 		unique_url = base_url+str(id_el)
 		if unique_url in c1.cache_diction:
-			print("\n------------------------------\nData of {} in cache\n------------------------------".format(id_el))
+			#print("\n------------------------------\nData of {} in cache\n------------------------------".format(id_el))
 			resp = c1.cache_diction.get(unique_url)
 		else:
-			print("\n---------------------------------------------\nData of {} NOT in cache, so making requests!\n---------------------------------------------".format(id_el))
+			#print("\n---------------------------------------------\nData of {} NOT in cache, so making requests!\n---------------------------------------------".format(id_el))
 			resp = requests.get(unique_url).text
 			#obj = json.loads(resp)
 			#Here, I did not make json data, just stored text data, is this OK?
 			c1.cache_diction[unique_url] = resp
 			c1.set(unique_url,resp)
 		soup = BeautifulSoup(resp,'html.parser')
-		name = soup.find('structureid')['id']
 		molecular_weight_and_length_inst_lst = soup.find('structureid').find_all('polymer')
-		mw_lst = []
-		polymer_length_lst = []
-		for el in molecular_weight_and_length_inst_lst:
-			mw_lst.append(el['weight'])
-			polymer_length_lst.append(el['length'])
-		protein_inst = Protein(name,mw_lst,polymer_length_lst)
-		protein_inst_list.append(protein_inst)
+
+		unique_url_for_resolution = base_url_for_resolution+str(id_el)
+		if unique_url_for_resolution in c1.cache_diction:
+			#print("\n------------------------------\nResolution Data of {} in cache\n------------------------------".format(id_el))
+			resp_res = c1.cache_diction.get(unique_url_for_resolution)
+		else:
+			#print("\n---------------------------------------------\nResolution Data of {} NOT in cache, so making requests!\n---------------------------------------------".format(id_el))
+			resp_res = requests.get(unique_url_for_resolution).text
+			#obj = json.loads(resp)
+			#Here, I did not make json data, just stored text data, is this OK?
+			c1.cache_diction[unique_url_for_resolution] = resp_res
+			c1.set(unique_url_for_resolution,resp_res)
+		soup_res = BeautifulSoup(resp_res,'html.parser')
+
+		try:
+			polymer_description = soup.find('macromolecule')['name']
+			for el in molecular_weight_and_length_inst_lst:
+				if int(el['length']) < int(length_of_short_peptide):
+					name = soup.find('structureid')['id']
+					molecular_weight = el['weight']
+					polymer_length = el['length']
+					resolution = soup_res.find('pdb')['resolution']
+					polymer_description = soup.find('macromolecule')['name']
+					protein_inst = Protein(name,molecular_weight,polymer_length,resolution,polymer_description)
+					protein_inst_list.append(protein_inst)
+				else:
+					pass
+		except Exception as inst:
+			print(inst)
+
 	return protein_inst_list
 
-print(len(get_protein_info(1000)))
+for el in get_protein_with_short_peptide_info(1000,10):
+	print(el)

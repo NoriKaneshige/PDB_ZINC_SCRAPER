@@ -40,19 +40,28 @@ class Compound(Post):
 	def __str__(self):
 		return "{} ({}): ${}: {}".format(self.name,self.institution,self.price,self.smile)
 
+#resolution, polymer_description
 class Protein(Post):
-	def __init__(self, name, molecular_weight, polymer_length, price='N/A', institution='PDB', address='PDB', url=None):
+	def __init__(self, name, molecular_weight, polymer_length, resolution, polymer_description, price='N/A', institution='PDB', address='PDB', url=None):
 		super().__init__(name, molecular_weight, price, institution, address,  url=None)
 		self.polymer_length = polymer_length
+		self.polymer_resolution = resolution
+		self.polymer_description = polymer_description
 
 	def get_polymer_length(self):
 		return self.polymer_length
+
+	def get_resolution(self):
+		return self.resolution
+
+	def get_polymer_description(self):
+		return self.polymer_description
 
 	def getStructure(self):
 		pass
 
 	def __str__(self):
-		return "{} ({}): ${}: {}".format(self.name,self.institution,self.price,self.polymer_length)
+		return "-------------------------------------------------------\nPDB_ID:{}\nLength of short peptide:{}\nResolution:{}\nDescription:{}".format(self.name,self.polymer_length,self.polymer_resolution,self.polymer_description)
 
 # p1 = Post("alcohol",35,"Umich","1431 McIntyre. St., Ann Arbor, MI",100)
 # print(p1)
