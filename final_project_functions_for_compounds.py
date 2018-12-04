@@ -88,5 +88,5 @@ def get_data_from_each_zinc_page(num_of_pages):
 	return all_compounds_inst_lst
 
 #print(get_data_from_each_zinc_page(1)[0].name) #cache is working!
-print(len(get_data_from_each_zinc_page(1)))
+#print(len(get_data_from_each_zinc_page(1)))
 #print(get_data_from_each_zinc_page(1)[0].smile)

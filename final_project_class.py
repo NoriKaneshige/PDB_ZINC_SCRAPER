@@ -27,7 +27,7 @@ class Post():
 		#self.name+' ('+self.institution+'): '+self.price
 
 class Compound(Post):
-	def __init__(self, name, molecular_weight, smile, price='N/A', institution='Zinc', address='Zinc', url=None):
+	def __init__(self, name, molecular_weight, smile, price=100.0, institution='UM', address='Ann Arbor', url=None):
 		super().__init__(name, molecular_weight, price, institution, address, url=None)
 		self.smile = smile
 
@@ -42,7 +42,7 @@ class Compound(Post):
 
 #resolution, polymer_description
 class Protein(Post):
-	def __init__(self, name, molecular_weight, polymer_length, resolution, polymer_description, price='N/A', institution='PDB', address='PDB', url=None):
+	def __init__(self, name, molecular_weight, polymer_length, resolution, polymer_description, price=100.0, institution='PDB', address='PDB', url=None):
 		super().__init__(name, molecular_weight, price, institution, address,  url=None)
 		self.polymer_length = polymer_length
 		self.polymer_resolution = resolution
