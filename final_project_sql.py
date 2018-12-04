@@ -22,7 +22,7 @@ Otherwise, psql open all databases"""
 
 try:
     cur.execute("CREATE TABLE IF NOT EXISTS Compounds(Name VARCHAR(256) PRIMARY KEY UNIQUE NOT NULL, Molecular_Weight DECIMAL(12,6), Smile VARCHAR(256), Price DECIMAL(12,6), Institution VARCHAR(64), Address VARCHAR(64), Url VARCHAR(64))") #"this is SQL query"
-    cur.execute("CREATE TABLE IF NOT EXISTS Proteinds(Name VARCHAR(256) PRIMARY KEY UNIQUE NOT NULL, Molecular_Weight DECIMAL(12,6), Polymer_Length INTEGER, Resolution DECIMAL(12,6), Polymer_Description VARCHAR(256), Price DECIMAL(12,6), Institution VARCHAR(64), Address VARCHAR(64), Url VARCHAR(64))")
+    cur.execute("CREATE TABLE IF NOT EXISTS Proteins(Name VARCHAR(256) PRIMARY KEY UNIQUE NOT NULL, Molecular_Weight DECIMAL(12,6), Polymer_Length INTEGER, Resolution DECIMAL(12,6), Polymer_Description VARCHAR(256), Price DECIMAL(12,6), Institution VARCHAR(64), Address VARCHAR(64), Url VARCHAR(64))")
     print("create table success")
 except:
     print('Unable to create tables')
@@ -64,12 +64,12 @@ protein_dictions_tuple = tuple(protein_dictions_lst)
 print(compound_dictions_tuple)
 print(protein_dictions_tuple)
 
-# def insert_compounds(name,molecular_weight,smile,price,institution,address,url, conn, cur):
-#     """Returns True if succcessful, False if not"""
-#     sql_Compounds = """INSERT INTO Compounds(Name,Molecular_Weight,Smile,Price,Institution,Address,Url) VALUES(%s, %s, %s, %s, %s, %s, %s)"""
-#     cur.execute(sql_Compounds,(name,float(molecular_weight),smile,float(price),institution,address,url))
-#     conn.commit()
-#     return True
+def insert_compounds(name,molecular_weight,smile,price,institution,address,url, conn, cur):
+    """Returns True if succcessful, False if not"""
+    sql_Compounds = """INSERT INTO Compounds(Name,Molecular_Weight,Smile,Price,Institution,Address,Url) VALUES(%s, %s, %s, %s, %s, %s, %s)"""
+    cur.execute(sql_Compounds,(name,float(molecular_weight),smile,float(price),institution,address,url))
+    conn.commit()
+    return True
 
 def insert_proteins(name,molecular_weight,polymer_length,resolution,polymer_description,price,institution,address,url, conn, cur):
     """Returns True if succcessful, False if not"""
@@ -87,15 +87,14 @@ def insert_proteins(name,molecular_weight,polymer_length,resolution,polymer_desc
 #     conn.commit()
 #     return True
 
-
-# for diction in compound_dictions_tuple:
-#     try:
-#         insert_compounds(diction["Name"],diction["Molecular_Weight"],diction["Smile"],diction["Price"],diction["Institution"],diction["Address"],diction["Url"], conn, cur) # Here: passing in actual conn and cur that exist
-#         print("Success adding a compound: {}".format(diction["Name"]))
-#     except Exception as inst:
-#         print("Failed adding a compound, check problem")
-#         print(inst)
-#         pass
+for diction in compound_dictions_tuple:
+    try:
+        insert_compounds(diction["Name"],diction["Molecular_Weight"],diction["Smile"],diction["Price"],diction["Institution"],diction["Address"],diction["Url"], conn, cur) # Here: passing in actual conn and cur that exist
+        print("Success adding a compound: {}".format(diction["Name"]))
+    except Exception as inst:
+        print("Failed adding a compound, check problem")
+        print(inst)
+        pass
 
 for diction in protein_dictions_tuple:
     try:
