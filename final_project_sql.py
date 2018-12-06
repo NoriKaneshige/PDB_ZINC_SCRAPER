@@ -61,8 +61,8 @@ for inst_el in get_data_from_each_zinc_page(1):
 
 compound_dictions_tuple = tuple(compound_dictions_lst)
 protein_dictions_tuple = tuple(protein_dictions_lst)
-print(compound_dictions_tuple)
-print(protein_dictions_tuple)
+# print(compound_dictions_tuple)
+# print(protein_dictions_tuple)
 
 def insert_compounds(name,molecular_weight,smile,price,institution,address,url, conn, cur):
     """Returns True if succcessful, False if not"""
@@ -87,19 +87,23 @@ def insert_proteins(name,molecular_weight,polymer_length,resolution,polymer_desc
 #     conn.commit()
 #     return True
 
+compound_counter = 1
 for diction in compound_dictions_tuple:
     try:
         insert_compounds(diction["Name"],diction["Molecular_Weight"],diction["Smile"],diction["Price"],diction["Institution"],diction["Address"],diction["Url"], conn, cur) # Here: passing in actual conn and cur that exist
-        print("Success adding a compound: {}".format(diction["Name"]))
+        print("{} Success adding a compound to SQL: {}".format(compound_counter,diction["Name"]))
+        compound_counter += 1
     except Exception as inst:
         print("Failed adding a compound, check problem")
         print(inst)
         pass
 
+protein_counter = 1
 for diction in protein_dictions_tuple:
     try:
         insert_proteins(diction["Name"],diction["Molecular_Weight"],diction["Polymer_Length"],diction['Resolution'],diction['Polymer_Description'],diction["Price"],diction["Institution"],diction["Address"],diction["Url"], conn, cur) # Here: passing in actual conn and cur that exist
-        print("Success adding a protein: {}".format(diction["Name"]))
+        print("{} Success adding a protein to SQL: {}".format(protein_counter,diction["Name"]))
+        protein_counter += 1
     except Exception as inst:
         print("Failed adding a protein, check problem")
         print(inst)
