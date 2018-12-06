@@ -51,13 +51,20 @@ def get_data_of_each_compound(unique_url):
 			c1.set(unique_url_for_each_compound,resp)
 
 		#get neccessary information of each compound
-		soup = BeautifulSoup(resp,'html.parser')
-		name = soup.find('div',class_='col-sm-9').find('a').text.split()[0]
-		molecular_weight = soup.find('tbody').find_all('td')[3].text
-		smile = soup.find('div',class_='input-sm').find('input')['value']
-		compound_inst = Compound(name,molecular_weight,smile)
-		compound_inst_lst.append(compound_inst)
-		#generate a compound instance and make a list of compound instances
+		try:
+			soup = BeautifulSoup(resp,'html.parser')
+			name = soup.find('div',class_='col-sm-9').find('a').text.split()[0]
+			molecular_weight = soup.find('tbody').find_all('td')[3].text
+			smile = soup.find('div',class_='input-sm').find('input')['value']
+			logp = soup.find('tbody').find_all('td')[4].text
+			tpsa = soup.find('div',class_='protomers').find_all('td')[4].text
+			structure = soup.find('div',class_='col-sm-3').find('img')['src']
+			compound_inst = Compound(name,molecular_weight,smile,logp,tpsa,structure)
+			compound_inst_lst.append(compound_inst)
+			#generate a compound instance and make a list of compound instances
+		except Exception as inst:
+			pass
+			#print(inst)
 	return compound_inst_lst
 
 def get_data_from_each_zinc_page(num_of_pages):
@@ -87,6 +94,27 @@ def get_data_from_each_zinc_page(num_of_pages):
 					all_compounds_inst_lst.append(inst_el)
 	return all_compounds_inst_lst
 
-#print(get_data_from_each_zinc_page(1)[0].name) #cache is working!
+#print(get_data_from_each_zinc_page(1)[0].tpsa) #cache is working!
+# print(get_data_from_each_zinc_page(1)[0].tpsa[4].text)
+# print(get_data_from_each_zinc_page(1)[0].logp)
+# print(get_data_from_each_zinc_page(1)[0].structure)
 #print(len(get_data_from_each_zinc_page(1)))
 #print(get_data_from_each_zinc_page(1)[0].smile)
+# for el in get_data_from_each_zinc_page(1)[0].tpsa:
+# 	print(type(el))
+
+# counter = 1
+# for el in get_data_from_each_zinc_page(1)[0].tpsa:
+# 	print(el)
+# 	print(counter)
+# 	print('---------------------')
+# 	counter += 1
+
+#print(len(get_data_from_each_zinc_page(1)))
+
+# for el in get_data_from_each_zinc_page(1):
+# 	print(el.mw)
+# for el in get_data_from_each_zinc_page(1):
+# 	print(el.tpsa)
+# for el in get_data_from_each_zinc_page(1):
+# 	print(el.logp)

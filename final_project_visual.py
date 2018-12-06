@@ -7,10 +7,11 @@ import plotly.graph_objs as go
 """this is the end of setting for plotly"""
 
 import numpy as np
+from final_project_functions_for_compounds import *
 
 #x, y, z = np.random.multivariate_normal(np.array([300,50,3]), np.eye(3), 400).transpose()
 #x,y,z = [450,60,3],[389,70,5],[350,45,2]
-x,y,z = [450,389,350],[60,70,45],[3,2,2]
+x,y,z = [float(el.mw) for el in get_data_from_each_zinc_page(1)],[int(el.tpsa) for el in get_data_from_each_zinc_page(1)],[float(el.logp) for el in get_data_from_each_zinc_page(1)]
 
 trace1 = go.Scatter3d(
     x=x,
@@ -19,7 +20,7 @@ trace1 = go.Scatter3d(
     mode='markers',
     marker=dict(
         size=12,
-        color=z,                # set color to an array/list of desired values
+        color=y,                # set color to an array/list of desired values
         colorscale='Viridis',   # choose a colorscale
         opacity=0.6
     )
@@ -36,3 +37,4 @@ layout = go.Layout(
 )
 fig = go.Figure(data=data, layout=layout)
 py.iplot(fig, filename='3d-scatter-colorscale')
+print('Please go to plotly site to see the visual!')

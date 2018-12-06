@@ -27,18 +27,27 @@ class Post():
 		#self.name+' ('+self.institution+'): '+self.price
 
 class Compound(Post):
-	def __init__(self, name, molecular_weight, smile, price=100.0, institution='UM', address='Ann Arbor', url=None):
+	def __init__(self, name, molecular_weight, smile, logp, tpsa, structure, price=100.0, institution='UM', address='Ann Arbor', url=None):
 		super().__init__(name, molecular_weight, price, institution, address, url=None)
 		self.smile = smile
+		self.logp = logp
+		self.tpsa = tpsa
+		self.structure = structure
 
 	def getSmile(self):
 		return self.smile
 
+	def getLogp(self):
+		return self.logp
+
+	def getTpsa(self):
+		return self.tpsa
+
 	def getStructure(self):
-		pass
+		return self.structure
 
 	def __str__(self):
-		return "{} ({}): ${}: {}".format(self.name,self.institution,self.price,self.smile)
+		return "Name:{} ({}), Smile:{}, LogP:{}, tPSA:{}".format(self.name,self.smile,self.logp,self.tpsa)
 
 #resolution, polymer_description
 class Protein(Post):
