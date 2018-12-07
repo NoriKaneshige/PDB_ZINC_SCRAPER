@@ -108,3 +108,67 @@ for diction in protein_dictions_tuple:
         print("Failed adding a protein, check problem")
         print(inst)
         pass
+
+"""return all info from Compounds"""
+# cur.execute("SELECT * FROM Compounds")
+# print(cur.fetchone())
+"""return all info from Movie_Numbers"""
+# cur.execute("SELECT * FROM Proteins")
+# print(cur.fetchall())
+"""return only Title info from Movie_Names"""
+cur.execute("SELECT Name FROM Proteins WHERE Polymer_Length <= 4")
+print(cur.fetchall())
+"""return only Rating_IMDB info from Movie_Numbers"""
+# cur.execute("SELECT Rating_IMDB FROM Movie_Numbers")
+# print(cur.fetchall())
+"""return only Director info from Movie_Names"""
+# cur.execute("SELECT Director FROM Movie_Names")
+# print(cur.fetchall())
+"""return US_Gross and Title info from Movie_Numbers"""
+# cur.execute("SELECT Title,US_Gross FROM Movie_Numbers")
+# print(cur.fetchall())
+"""return all movie titles of Steven Spielberg from Movie_Names"""
+# cur.execute("SELECT Title FROM Movie_Names WHERE Director = 'Steven Spielberg'")
+# print(cur.fetchall()) #this one worked even though data in a column is list of list
+"""return all info of Steven Spielberg from Movie_Names"""
+# cur.execute("SELECT * FROM Movie_Names WHERE Director = 'Steven Spielberg'")
+# print(cur.fetchall())
+"""return the total number of movies from Movie_Names"""
+# cur.execute("SELECT COUNT(*) FROM Movie_Names")
+# print(cur.fetchone()) #fetchall() is the same
+"""return the total number of Directors from Movie_Names"""
+# cur.execute("SELECT COUNT(Director) FROM Movie_Names")
+# print(cur.fetchone()) #fetchall() is the same
+#This is counting everything, so not appropriate
+"""return average number of US_Gross from Movie_Numbers"""
+# cur.execute("SELECT US_Gross FROM Movie_Numbers") #AVG(US_Gross) doesn't work because US_Gross column contains list data
+# us_gross_lst = cur.fetchall() #fetchall() is the same
+# us_gross_str_lst = []
+# for el in us_gross_lst:
+#     us_gross_str_lst.append(int(el[0]))
+# print(mean(us_gross_str_lst))
+# cur.execute("SELECT AVG(US_Gross) FROM Movie_Numbers")
+# print(cur.fetchone())
+"""I can do MIN(),MAX(),SUM()"""
+# cur.execute("SELECT MAX(US_Gross) FROM Movie_Numbers")
+# print(cur.fetchone())
+# cur.execute("SELECT MIN(US_Gross) FROM Movie_Numbers")
+# print(cur.fetchone())
+# cur.execute("SELECT AVG(US_Gross) FROM Movie_Numbers")
+# print(cur.fetchone()) #why doesn't work?
+"""Apparently that column is not a number but a character column. Do not store numbers in varchar (or char) columns.
+Change the datatype to integer, numeric or whatever suits you best."""
+# cur.execute("SELECT SUM(US_Gross) FROM Movie_Numbers")
+# print(cur.fetchone()) #why doesn't work?
+"""return all from Movie_Numbers where US_Gross >100000"""
+# cur.execute("SELECT * FROM Movie_Numbers WHERE US_Gross > 10000")
+# print(cur.fetchall()) #why doesn't work?
+"""return titles from Movie_Names where a title shorter than 5 charactoers"""
+# cur.execute("SELECT Title FROM Movie_Names WHERE LENGTH(Title) < 5")
+# print(cur.fetchall())
+"""return titles from Movie_Names where a title starts with a 'S'"""
+# cur.execute("SELECT Title FROM Movie_Names WHERE Title LIKE 'S%'")
+# print(cur.fetchall())
+"""return titles from Movie_Names where a title has 'zz''"""
+# cur.execute("SELECT Title FROM Movie_Names WHERE Title LIKE '%zz%'")
+# print(cur.fetchall())

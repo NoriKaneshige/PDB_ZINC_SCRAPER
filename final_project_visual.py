@@ -27,14 +27,30 @@ trace1 = go.Scatter3d(
 )
 
 data = [trace1]
+# layout = go.Layout(
+#     margin=dict(
+#         l=0,
+#         r=0,
+#         b=0,
+#         t=0
+#     )
+# )
+# fig = go.Figure(data=data, layout=layout)
+
 layout = go.Layout(
-    margin=dict(
-        l=0,
-        r=0,
-        b=0,
-        t=0
-    )
-)
+                    scene = dict(
+                    xaxis = dict(
+                        title='Molecular Weight'),
+                    yaxis = dict(
+                        title='Polar Surface Area'),
+                    zaxis = dict(
+                        title='LogP'),),
+                    width=700,
+                    margin=dict(
+                    r=20, b=10,
+                    l=10, t=10)
+                  )
 fig = go.Figure(data=data, layout=layout)
-py.iplot(fig, filename='3d-scatter-colorscale')
+py.iplot(fig, filename='SI508_final_project')
+#plot_url = py.plot(fig, filename='SI508_final_project')
 print('Please go to plotly site to see the visual!')
