@@ -4,6 +4,9 @@ import requests
 from advanced_expiry_caching import *
 from final_project_class import *
 import json
+import sys
+import csv
+csv.field_size_limit(100000000)
 
 # """Google Places API"""
 # Places_API_key = 'AIzaSyCiTClfVeCIzLFeSUhov3-7e0Y89kWB07I'
@@ -94,6 +97,41 @@ def get_data_from_each_zinc_page(num_of_pages):
 					all_compounds_inst_lst.append(inst_el)
 	return all_compounds_inst_lst
 
+"""Generator expression is used in the function below"""
+def get_zinc_compound_in_pdb(zinc_compound_inst_lst):
+#read smile in pdb_csv file
+	pdb_ligand_smile_id_lst_lst = []
+	with open('PDB_ligands.csv') as csv_file:
+		csv_reader = csv.reader(csv_file, delimiter=',')
+		line_count = 0
+		#while line_count < 100:
+		for row in csv_reader:
+			if line_count == 0:
+				line_count += 1
+				pass
+			elif line_count != 0:
+				try:
+					pdb_ligand_smile_id_lst = []
+					pdb_ligand_smile_id_lst.append(row[5])
+					pdb_ligand_smile_id_lst.append(row[0])
+					pdb_ligand_smile_id_lst_lst.append(pdb_ligand_smile_id_lst)
+					line_count += 1
+					pass
+				except Exception as inst:
+					#print(inst)
+					line_count += 1
+					pass
+#generator expression
+	gen_exp = (el[1] for zinc_comp in zinc_compound_inst_lst for el in pdb_ligand_smile_id_lst_lst if el[0] == zinc_comp.smile)
+	if list(gen_exp):
+		print(list(gen_exp))
+		print('Go search the fetched PDB ids in PDB site!')
+	else:
+		print('No match in between zinc compounds and PDB ligands!!!')
+
+	return list(gen_exp)
+
+#print(len(get_zinc_compound_in_pdb(get_data_from_each_zinc_page(1))))
 #print(get_data_from_each_zinc_page(1)[0].tpsa) #cache is working!
 # print(get_data_from_each_zinc_page(1)[0].tpsa[4].text)
 # print(get_data_from_each_zinc_page(1)[0].logp)
