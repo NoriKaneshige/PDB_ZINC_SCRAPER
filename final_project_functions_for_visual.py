@@ -11,23 +11,24 @@ from final_project_functions_for_compounds import *
 
 #x, y, z = np.random.multivariate_normal(np.array([300,50,3]), np.eye(3), 400).transpose()
 #x,y,z = [450,60,3],[389,70,5],[350,45,2]
-x,y,z,info= [float(el.mw) for el in get_data_from_each_zinc_page(1)],[int(el.tpsa) for el in get_data_from_each_zinc_page(1)],[float(el.logp) for el in get_data_from_each_zinc_page(1)],[el.structure for el in get_data_from_each_zinc_page(1)]
+def sql_result_visual(compound_inst_lst_for_visual):
+    x,y,z,info= [float(el.mw) for el in compound_inst_lst_for_visual],[int(el.tpsa) for el in compound_inst_lst_for_visual],[float(el.logp) for el in compound_inst_lst_for_visual],[el.structure for el in compound_inst_lst_for_visual]
 
-trace1 = go.Scatter3d(
-    x=x,
-    y=y,
-    z=z,
-    hovertext=info,
-    mode='markers',
-    marker=dict(
-        size=12,
-        color=y,                # set color to an array/list of desired values
-        colorscale='Viridis',   # choose a colorscale
-        opacity=0.6
-    )
-)
+    trace1 = go.Scatter3d(
+        x=x,
+        y=y,
+        z=z,
+        hovertext=info,
+        mode='markers',
+        marker=dict(
+            size=12,
+            color=y,                # set color to an array/list of desired values
+            colorscale='Viridis',   # choose a colorscale
+            opacity=0.6
+            )
+            )
 
-data = [trace1]
+    data = [trace1]
 # layout = go.Layout(
 #     margin=dict(
 #         l=0,
@@ -38,20 +39,22 @@ data = [trace1]
 # )
 # fig = go.Figure(data=data, layout=layout)
 
-layout = go.Layout(
-                    scene = dict(
-                    xaxis = dict(
-                        title='Molecular Weight'),
-                    yaxis = dict(
-                        title='Polar Surface Area'),
-                    zaxis = dict(
-                        title='LogP'),),
-                    width=700,
-                    margin=dict(
-                    r=20, b=10,
-                    l=10, t=10)
-                  )
-fig = go.Figure(data=data, layout=layout)
-py.iplot(fig, filename='SI508_final_project')
-#plot_url = py.plot(fig, filename='SI508_final_project')
-print('Please go to plotly site to see the visual!')
+    layout = go.Layout(
+                        scene = dict(
+                        xaxis = dict(
+                            title='Molecular Weight'),
+                            yaxis = dict(
+                            title='Polar Surface Area'),
+                            zaxis = dict(
+                            title='LogP'),),
+                            width=700,
+                            margin=dict(
+                            r=20, b=10,
+                            l=10, t=10)
+                            )
+    fig = go.Figure(data=data, layout=layout)
+#py.iplot(fig, filename='SI508_final_project')
+    plot_url = py.plot(fig, filename='SI508_final_project')
+    print('Please go to plotly site to see the visual!')
+
+sql_result_visual(get_data_from_each_zinc_page(1))
