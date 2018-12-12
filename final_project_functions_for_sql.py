@@ -4,6 +4,7 @@ import psycopg2.extras
 from final_project_class import *
 from final_project_functions_for_compounds import *
 from final_project_functions_for_proteins import *
+from final_project_functions_for_visual import *
 
 """setting up SQL and tables, I don't need to make functions in this setting up step"""
 conn = psycopg2.connect("dbname='si508_final_project' user='Koitaro'") # No password on the databases yet -- wouldn't want to save that in plain text in the program, anyway
@@ -18,11 +19,14 @@ except:
     exit() # Stop running program if there's no db connection.
 
 cur.execute("DROP TABLE IF EXISTS Compounds;")
+cur.execute("DROP TABLE IF EXISTS Proteins2;")
 cur.execute("DROP TABLE IF EXISTS Proteins;")
+
 
 try:
     cur.execute("CREATE TABLE IF NOT EXISTS Compounds(Name VARCHAR(256) PRIMARY KEY UNIQUE NOT NULL, Molecular_Weight DECIMAL(12,6), Smile VARCHAR(256), Price DECIMAL(12,6), Institution VARCHAR(64), Address VARCHAR(64), Url VARCHAR(64))") #"this is SQL query"
     cur.execute("CREATE TABLE IF NOT EXISTS Proteins(Name VARCHAR(256) PRIMARY KEY UNIQUE NOT NULL, Molecular_Weight DECIMAL(12,6), Polymer_Length INTEGER, Resolution DECIMAL(12,6), Polymer_Description VARCHAR(256), Price DECIMAL(12,6), Institution VARCHAR(64), Address VARCHAR(64), Url VARCHAR(64))")
+    cur.execute("CREATE TABLE IF NOT EXISTS Proteins2(Name VARCHAR(256) PRIMARY KEY UNIQUE NOT NULL REFERENCES Proteins(Name), Molecular_Weight DECIMAL(12,6), Polymer_Length INTEGER, Resolution DECIMAL(12,6), Polymer_Description VARCHAR(256), Price DECIMAL(12,6), Institution VARCHAR(64), Address VARCHAR(64), Url VARCHAR(64))")
     print("create table success")
 except:
     print('Unable to create tables')
@@ -35,7 +39,7 @@ Otherwise, psql open all databases"""
 
 def make_protein_dictionary_lst(inst_protein):
     protein_dictions_lst = []
-    print('here is run!')
+    #print('here is run!')
     for inst_el in inst_protein:
         protein_diction = {}
         protein_diction['Name'] = inst_el.name
@@ -57,6 +61,8 @@ def insert_proteins(name,molecular_weight,polymer_length,resolution,polymer_desc
     """Returns True if succcessful, False if not"""
     sql_Proteins = """INSERT INTO Proteins(Name,Molecular_Weight,Polymer_Length,Resolution,Polymer_Description,Price,Institution,Address,Url) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)"""
     cur.execute(sql_Proteins,(name,float(molecular_weight),int(polymer_length),float(resolution),polymer_description,float(price),institution,address,url))
+    sql_Proteins2 = """INSERT INTO Proteins2(Name,Molecular_Weight,Polymer_Length,Resolution,Polymer_Description,Price,Institution,Address,Url) VALUES(%s, %s, %s, %s, %s, %s, %s, %s, %s)"""
+    cur.execute(sql_Proteins2,(name,float(molecular_weight),int(polymer_length),float(resolution),polymer_description,float(price),institution,address,url))
     conn.commit()
     return True
 
@@ -67,7 +73,7 @@ def get_protein_data_and_store_in_SQL(number_of_protein,length_of_peptide,resol)
         try:
             #print(diction)
             insert_proteins(diction["Name"],diction["Molecular_Weight"],diction["Polymer_Length"],diction['Resolution'],diction['Polymer_Description'],diction["Price"],diction["Institution"],diction["Address"],diction["Url"], conn, cur) # Here: passing in actual conn and cur that exist
-            print("{} Success adding a protein to SQL: {}".format(protein_counter,diction["Name"]))
+            #print("{} Success adding a protein to SQL: {}".format(protein_counter,diction["Name"]))
             protein_counter += 1
         except Exception as inst:
             print("Failed adding a protein, check problem")
@@ -75,6 +81,7 @@ def get_protein_data_and_store_in_SQL(number_of_protein,length_of_peptide,resol)
             pass
 
 #get_protein_data_and_store_in_SQL(1000,10,2)
+
 def make_compound_dictionary_lst(inst_compound):
     compound_dictions_lst = []
     for inst_el in inst_compound:
@@ -105,18 +112,25 @@ def get_compound_data_and_store_in_SQL(num_of_page_to_scrape):
     for diction in make_compound_dictionary_lst(get_data_from_each_zinc_page(num_of_page_to_scrape)):
         try:
             insert_compounds(diction["Name"],diction["Molecular_Weight"],diction["Smile"],diction["Price"],diction["Institution"],diction["Address"],diction["Url"], conn, cur) # Here: passing in actual conn and cur that exist
-            print("{} Success adding a compound to SQL: {}".format(compound_counter,diction["Name"]))
+            #print("{} Success adding a compound to SQL: {}".format(compound_counter,diction["Name"]))
             compound_counter += 1
         except Exception as inst:
             print("Failed adding a compound, check problem")
             print(inst)
             pass
-
+    print("\n\n-------------------------------------------------------------------------\n{} compounds were stored into Compounds Table in SQL database!\n-------------------------------------------------------------------------".format(compound_counter))
 #get_compound_data_and_store_in_SQL(1)
+    return get_data_from_each_zinc_page(num_of_page_to_scrape)
 
 """return all info from Compounds"""
 # cur.execute("SELECT * FROM Compounds")
 # print(cur.fetchone())
+"""return all info from Compounds"""
+# cur.execute("SELECT * FROM Compounds")
+# print(cur.fetchall())
+"""return all info from Movie_Numbers"""
+# cur.execute("SELECT * FROM Proteins2")
+# print(cur.fetchall())
 """return all info from Movie_Numbers"""
 # cur.execute("SELECT * FROM Proteins")
 # print(cur.fetchall())

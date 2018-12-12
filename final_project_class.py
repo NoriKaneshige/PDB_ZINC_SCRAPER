@@ -46,8 +46,8 @@ class Compound(Post):
 	def getStructure(self):
 		return self.structure
 
-	def __str__(self):
-		return "Name:{} ({}), Smile:{}, LogP:{}, tPSA:{}".format(self.name,self.smile,self.logp,self.tpsa)
+	# def __str__(self):
+	# 	return "Name:{} ({}), Smile:{}, LogP:{}, tPSA:{}".format(self.name,self.smile,self.logp,self.tpsa)
 
 #resolution, polymer_description
 class Protein(Post):
