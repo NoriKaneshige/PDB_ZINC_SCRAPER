@@ -28,6 +28,11 @@ Content from cell 1 | Content from cell 2
 Content in the first column | Content in the second column
 
 
+num of files | File Names
+------------ | -------------
+1 | PDB_ligands.csv
+Content in the first column | Content in the second column
+
 
 
   | File names
