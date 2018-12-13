@@ -22,21 +22,8 @@ git clone https://github.com/NoriKaneshige/SI508-FinalProject.git
 4) The files that you really need is the following.
 
 
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
-
-
 num of files | File Names
 ------------ | -------------
-1 | PDB_ligands.csv
-Content in the first column | Content in the second column
-
-
-
-  | File names
------ | ------------
 1 | PDB_ligands.csv
 2 | advanced_expiry_caching.py
 3 | final_project_class.py
@@ -47,6 +34,7 @@ Content in the first column | Content in the second column
 8 | final_project_human_protein_id.json
 9 | final_project_test_suites.py
 10 | final_project_user_interactive.py
+
 
 ### Prerequisites/Installing/Database_SetUp
 
