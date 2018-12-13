@@ -68,6 +68,7 @@ def insert_proteins(name,molecular_weight,polymer_length,resolution,polymer_desc
 
 """this is the main function for protein data"""
 def get_protein_data_and_store_in_SQL(number_of_protein,length_of_peptide,resol):
+    print('\n\n-------------------------------------------------------------------------\nNow checking all {} proteins and finding matches!\nWhen matches are found, these are stored into SQL database!\nSorry, this process might be more than couple minutes if you do not have data in cache...\n-------------------------------------------------------------------------'.format(number_of_protein))
     protein_counter = 1
     for diction in make_protein_dictionary_lst(get_protein_with_short_peptide(number_of_protein,length_of_peptide,resol)):
         try:
@@ -79,8 +80,9 @@ def get_protein_data_and_store_in_SQL(number_of_protein,length_of_peptide,resol)
             print("Failed adding a protein, check problem")
             print(inst)
             pass
-
-#get_protein_data_and_store_in_SQL(1000,10,2)
+    print("\n\n-------------------------------------------------------------------------\n{} proteins were stored into Proteins Table in SQL database!\n-------------------------------------------------------------------------".format(protein_counter))
+    return get_protein_with_short_peptide(number_of_protein,length_of_peptide,resol)
+#get_protein_data_and_store_in_SQL(100,10,2)
 
 def make_compound_dictionary_lst(inst_compound):
     compound_dictions_lst = []
@@ -108,6 +110,7 @@ def insert_compounds(name,molecular_weight,smile,price,institution,address,url, 
 
 """this is the main function for compound data"""
 def get_compound_data_and_store_in_SQL(num_of_page_to_scrape):
+    print('\n\n-------------------------------------------------------------------------\nNow checking {} zinc pages and storing compound data into SQL database!\nSorry, this process might be more than couple minutes if you do not have data in cache...\n-------------------------------------------------------------------------'.format(num_of_page_to_scrape))
     compound_counter = 1
     for diction in make_compound_dictionary_lst(get_data_from_each_zinc_page(num_of_page_to_scrape)):
         try:

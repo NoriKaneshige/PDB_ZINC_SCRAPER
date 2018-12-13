@@ -127,7 +127,7 @@ def get_zinc_compound_in_pdb(zinc_compound_inst_lst):
 		print(list(gen_exp))
 		print('Go search the fetched PDB ids in PDB site!')
 	else:
-		print('No match in between zinc compounds and PDB ligands!!!')
+		print('\n\n-----------------------------------------------------\nNo match between zinc compounds and PDB ligands!!!\n-----------------------------------------------------')
 
 	return list(gen_exp)
 

@@ -7,28 +7,34 @@ import json
 
 CACHE_FILE = "final_project_cache.json"
 
+# def get_human_pdb_protein_ids():
+#
+# 	c1 = Cache(CACHE_FILE)
+# 	unique_url = 'http://www.rcsb.org/pdb/resultsV2/sids.jsp?qrid=55BB0FFB'
+# 	if unique_url in c1.cache_diction:
+# 		#print("\n------------------------------\nPDB ID Data in cache\n------------------------------")
+# 		resp = c1.cache_diction.get(unique_url)
+# 	else:
+# 		#print("\n---------------------------------------------\nPDB ID Data NOT in cache, so making requests!\n---------------------------------------------")
+# 		resp = requests.get(unique_url).text
+# 		#obj = json.loads(resp)
+# 		#Here, I did not make json data, just stored text data, is this OK?
+# 		c1.cache_diction[unique_url] = resp
+# 		c1.set(unique_url,resp)
+#
+# 	soup = BeautifulSoup(resp,'html.parser')
+# 	pdb_id_human_lst = list(soup)[0].split('\n')
+#
+# 	return pdb_id_human_lst
+
 def get_human_pdb_protein_ids():
-
-	c1 = Cache(CACHE_FILE)
-	unique_url = 'http://www.rcsb.org/pdb/resultsV2/sids.jsp?qrid=3BB4340C'
-	if unique_url in c1.cache_diction:
-		#print("\n------------------------------\nPDB ID Data in cache\n------------------------------")
-		resp = c1.cache_diction.get(unique_url)
-	else:
-		#print("\n---------------------------------------------\nPDB ID Data NOT in cache, so making requests!\n---------------------------------------------")
-		resp = requests.get(unique_url).text
-		#obj = json.loads(resp)
-		#Here, I did not make json data, just stored text data, is this OK?
-		c1.cache_diction[unique_url] = resp
-		c1.set(unique_url,resp)
-
-	soup = BeautifulSoup(resp,'html.parser')
-	pdb_id_human_lst = list(soup)[0].split('\n')
-
+	with open("final_project_human_protein_id.json", 'r') as f:
+		pdb_id_human = json.loads(f.read()) # or
+		#pdb_id_human = json.load(f)
+		pdb_id_human_lst = pdb_id_human['http://www.rcsb.org/pdb/resultsV2/sids.jsp?qrid=55BB0FFB'].split('\n')
 	return pdb_id_human_lst
 
-#get_human_pdb_protein_ids()
-
+#print(get_human_pdb_protein_ids())
 
 def get_protein_with_short_peptide(num_of_protein_to_check,length_of_short_peptide,resolution_limit):
 	protein_inst_list = []
@@ -89,5 +95,6 @@ def get_protein_with_short_peptide(num_of_protein_to_check,length_of_short_pepti
 
 	return protein_inst_list
 
+#get_protein_with_short_peptide(1000,10,2)
 # for el in get_protein_with_short_peptide(1000,10,2):
 # 	print(el)
