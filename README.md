@@ -20,6 +20,9 @@ Please clone all necessary files from NoriKaneshige's repository.
 3) Please open your terminal and type the following.
 git clone https://github.com/NoriKaneshige/SI508-FinalProject.git
 4) The files that you really need is the following.
+
+
+
   | File names
 ----- | ------------
 1 | PDB_ligands.csv
@@ -31,7 +34,7 @@ git clone https://github.com/NoriKaneshige/SI508-FinalProject.git
 7 | final_project_functions_for_visual
 8 | final_project_human_protein_id.json
 9 | final_project_test_suites.py
-10 | final_project_user_interactive.py 
+10 | final_project_user_interactive.py
 
 ### Prerequisites/Installing/Database_SetUp
 
