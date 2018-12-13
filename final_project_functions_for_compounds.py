@@ -97,7 +97,8 @@ def get_data_from_each_zinc_page(num_of_pages):
 					all_compounds_inst_lst.append(inst_el)
 	return all_compounds_inst_lst
 
-"""Generator expression is used in the function below"""
+"""Generator expression could not be used in the function below
+instead, list comprehension worked. probably because data from generator expression disappear after the run"""
 def get_zinc_compound_in_pdb(zinc_compound_inst_lst):
 #read smile in pdb_csv file
 	pdb_ligand_smile_id_lst_lst = []
@@ -122,7 +123,7 @@ def get_zinc_compound_in_pdb(zinc_compound_inst_lst):
 					line_count += 1
 					pass
 #generator expression
-	gen_exp = (el[1] for zinc_comp in zinc_compound_inst_lst for el in pdb_ligand_smile_id_lst_lst if el[0] == zinc_comp.smile)
+	gen_exp = [el[1] for zinc_comp in zinc_compound_inst_lst for el in pdb_ligand_smile_id_lst_lst if el[0] == zinc_comp.smile]
 	if list(gen_exp):
 		print(list(gen_exp))
 		print('Go search the fetched PDB ids in PDB site!')

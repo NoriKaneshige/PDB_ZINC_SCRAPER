@@ -122,9 +122,9 @@ def get_compound_data_and_store_in_SQL(num_of_page_to_scrape):
             print(inst)
             pass
     print("\n\n-------------------------------------------------------------------------\n{} compounds were stored into Compounds Table in SQL database!\n-------------------------------------------------------------------------".format(compound_counter))
-#get_compound_data_and_store_in_SQL(1)
-    return get_data_from_each_zinc_page(num_of_page_to_scrape)
 
+    return get_data_from_each_zinc_page(num_of_page_to_scrape)
+#get_compound_data_and_store_in_SQL(1)
 """return all info from Compounds"""
 # cur.execute("SELECT * FROM Compounds")
 # print(cur.fetchone())
