@@ -18,7 +18,7 @@ In this final project, I have two main purposes.
 **2) I want to get data from PDB to find proteins that are co-crystalized with short peptides.**
 
 
-**1) is straightforward. Let me explain about 2) little more. Often times, in drug discovery, we want to find short peptides that can find target proteins. This is often the beginning of drug discovery. However, even though we could search protein data in PDB by our hand one by one to find proteins with short peptides, it is super time consuming. There is no way to quickly find it as of now. So, I wanted to automate this process!**
+**1) is straightforward. Let me explain about 2) little more. Often times, in drug discovery, we want to find short peptides that can bind target proteins. This is often the beginning of drug discovery. However, even though we could search protein data in PDB by our hand one by one to find proteins with short peptides, it is super time consuming. There is no way to quickly find it as of now. So, I wanted to automate this process!**
 
 
 ### Cloning from Github repository
