@@ -236,13 +236,13 @@ points | requirements | comments
 400 | TWO data sources | PDB API, Zinc pages, csv data, json data
 100 | One data sources from internet | PDB data and Zinc data are from internet
 200 | Caching | Caching was implemented. Please look at files.
-300 | Process data from each source | Data from PDB, Zinc, csv file, and json file are processed to take necessary data
+300 | Process data from each source | Data from PDB, Zinc, csv file, and json file are processed to take necessary data.
 150 | Import and use functionality | BeautifulSoup, Plotly, Psycopg, Numpy, PostgreSQL, datetime, webbrowser etc
 400 | test suite | 5 classes and 10 test methods
-100 | Result product | 3D scatter plot by Plotly, also the program is interactive with users
+100 | Result product | 3D scatter plot by Plotly, also the program is interactive with users. Users can also do query after storing data into local database with easy and interactive manner.
 600 | 2 classed and instances | 1 parent class and 2 subclasses that inherit the parent class. Instance are created.
 100 | An example of your output  | Many example outputs are included in the repository
 100 | Errors must be handled | The program is interactive with users and potential errors by user inputs are handled.
-450 | Second level requirements | BeautifulSoup, PostgreSQL, Onject Inheritance, Generator Expression are used.
+450 | Second level requirements | BeautifulSoup, PostgreSQL, Object Inheritance, Generator Expression are used. For example, please look at line 42 of final_project_user_interactive.py where you can see generator expression.
 400 | Third level requirements | Visualization by Plotly and PostgreSQL are used. Also, this in an interactive project.
 total | 4000 | This is the end of README
