@@ -115,19 +115,29 @@ Copy and paste this line onto your terminal:
 
 ### Other libraries/modules
 
-You will be importing requests/json/datetime/sys/csv/webbrowser/unittest when you run the program.
+You will be importing **requests**/**json**/**datetime**/**sys**/**csv**/**webbrowser**/**unittest** when you run the program.
 
 
 ### Secret information
 You need to replace two things in py files with your secret information. So please have your plotly usename and plotly api_key. You will be cloning all files from Github repository.
+
+
 1) Please open the file, final_project_functions_for_sql, and replace username with yours.
-e.g. user='YOUR_USER_NAME'
-2) Please open the file, final_project_functions_for_visual, and replace plotly username and plotly api_key. e.g. username='YOUR_PLOTLY_USER_NAME', api_key='YOUR_PLOTLY_API_KEY'
+
+
+**e.g. user='YOUR_USER_NAME'**
+
+
+2) Please open the file, final_project_functions_for_visual, and replace plotly username and plotly api_key.
+
+
+**e.g. username='YOUR_PLOTLY_USER_NAME', api_key='YOUR_PLOTLY_API_KEY'**
 
 
 ## Running the tests
 
-This time, tests were not written.
+
+Please run 
 
 
 ## What/How to run
