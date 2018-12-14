@@ -100,7 +100,7 @@ You need to replace two things in py files with your secret information. So plea
 **e.g. username='YOUR_PLOTLY_USER_NAME', api_key='YOUR_PLOTLY_API_KEY'**
 
 
-## Instructuions about how to run the project!
+## Instructuions about how to run the project (ZINC)!
 
 Here, let me demonstrate the final project to show you typical steps and outcomes!
 
@@ -153,7 +153,7 @@ Let me explain it here. PDB (protein data bank) has also compound data. Basicall
 
 
 Let me demonstrate here.
-I typed **zinc** and input **3** to scrape 3 zinc pages (all data in the cache this time because I scraped once before). Then I typed **ZincPDB** and hit enter. Here, the program opens final_project_human_protein_id.json and find any matches between zinc compounds just I got and PDB compounds by using SMILES. The result looks like this in this case. I found that PDB compound that has 2DL (PDB compound ID). You can simply go to PDB site and type 2DL to look up this compound as shown below.
+I typed **zinc** and input **3** to scrape 3 zinc pages (all data in the cache this time because I scraped once before). Then I typed **ZincPDB** and hit enter. Here, the program opens PDB_ligands.csv and find any matches between zinc compounds just I got and PDB compounds by using SMILES. The result looks like this in this case. I found that PDB compound that has 2DL (PDB compound ID). You can simply go to PDB site and type 2DL to look up this compound as shown below.
 
 
 [Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display6.png)
@@ -163,39 +163,79 @@ I typed **zinc** and input **3** to scrape 3 zinc pages (all data in the cache t
 
 
 
-## What/How to run
-
-Only two files are needed to run the project2.
+## Instructuions about how to run the project (PDB)!
 
 
-1) proj2_nps.py
-2) advanced_expiry_caching.py
+Please run final_project_user_interactive.py as we did in Zinc search above.
 
 
-Those two files need to be contained in the same directory. Then simply run the python file, proj2_nps.py.
+Here, the program will read final_project_human_protein_id.json and create unique url for each protein and get data by using PDB's REST API. PDB has over 40,000 human protein crystal structures. The main purpose of this program is to find proteins that are co-crystalized with short peptides.
 
 
-**IMPORTANT!: you need to replace the followings with yours!!!**
+After typing **PDB**, you will be asked 3 things.
 
 
-**1) Google Places API**
+1) the number of proteins: I demonstrate searching 2000 proteins here. Scraping PDB site by using REAT API takes some time, so please DO NOT input huge number! 1000 proteins still need more than couple minutes.
+2) the length of short peptides: I use 10 in this demonstration.
+3) resolution: below 2 is considered high quality resolution, I use 2 in this demonstration.
 
 
-**2) Plotly username**
+Here, I found 43 proteins that are co-crystalized with short peptides that have less than equal 10 peptide length as shown blow.
 
 
-**3) Plotly API key**
+[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display8.png)
 
 
-**4) Mapbox access token**
+Now, you can do **ListALL** to see PDB IDs of those proteins.
 
 
-Then you can simply run the python file and follow input prompts that will appear in your terminal!!! Hope it works!!!
+[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display9.png)
 
 
-## What/How to check the results
-
-The results will show up in your terminal.
+Let's do **Query** next. Those 43 protein instances are stored in tables, Proteins and Ptoteins2 that have a relationship each other in sql database called si508_final_project. You can further limit the maximum length of short peptide. Let's input 5, for example. The result looks like the one below.
 
 
-**The maps will be uploaded in YOUR Mapbox website!**
+[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display10.png)
+
+
+
+Here you can see not only PDB ID, but also the descriptions of proteins. Depending on your interests, you can look up as many protein websites as you want. Let's try **look 1a09 1a1a 1bhf 1eb1 1h9o**.
+The result is show below.
+
+
+[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display11.png)
+
+
+## How to run unittest
+
+
+You can simply run **final_project_test_suites.py**
+
+
+The result should be like this.
+[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display_unittest.png)
+
+
+I wrote 5 test classes.
+
+1) test for Compound
+2) test for functions of Compound
+3) test for Protein
+4) test for functions of Protein
+5) test for functions of SQL
+
+
+## List of final project requirements fulfilled
+
+points | requirements | comments
+------------ | -------------------- | --------------------------------------------------------------------------
+1 | Beautiful Soup | https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+2 | Plotly | https://plot.ly/python/getting-started/
+3 | Psycopg | http://initd.org/psycopg/docs/install.html
+4 | Numpy | https://docs.scipy.org/doc/numpy-1.15.0/user/install.html
+5 | PostgreSQL | If necessary, please look at Lecture18_Postgres_Database_setup.pdf
+1 | Beautiful Soup | https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+2 | Plotly | https://plot.ly/python/getting-started/
+3 | Psycopg | http://initd.org/psycopg/docs/install.html
+4 | Numpy | https://docs.scipy.org/doc/numpy-1.15.0/user/install.html
+5 | PostgreSQL | If necessary, please look at Lecture18_Postgres_Database_setup.pdf
