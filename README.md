@@ -38,18 +38,18 @@ num of files | File Names
 8 | final_project_human_protein_id.json
 9 | final_project_test_suites.py
 10 | final_project_user_interactive.py
-
+11 | Lecture18_Postgres_Database_setup.pdf
 
 ### Prerequisites/Installing/Database_SetUp
 
 
 num | libraries/modules | url
------------- | -------------------- | ----------------------------------------------------
+------------ | -------------------- | --------------------------------------------------------------------------
 1 | Beautiful Soup | https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 2 | Plotly | https://plot.ly/python/getting-started/
 3 | Psycopg | http://initd.org/psycopg/docs/install.html
 4 | Numpy | https://docs.scipy.org/doc/numpy-1.15.0/user/install.html
-5 | PostgreSQL | More details below
+5 | PostgreSQL | If necessary, please look at Lecture18_Postgres_Database_setup.pdf
 
 
 The libraries/modules in the table need to be installed. Please go to the sources below if you need them.
@@ -59,50 +59,20 @@ You can go to the links below and follow the instructions to install those libra
 **Plotly**: If you don't have a Plotly account, please have **user name** and **api key** to use plotly.
 
 
-**PostgreSQL**: the installation of PosgreSQL might be little bit complicated. Please follow the instructions.
-1) First, get homebrew. Please go to this link: https://brew.sh/
-Copy and paste this line onto your terminal:
-
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com_/Homebrew/install/master/install)"
+**PostgreSQL**: the installation of PosgreSQL is bit complicated. If you do not have PostgreSQL installed, please take a close look at Lecture18_Postgres_Database_setup.pdf and follow the instruction step by step!
 
 
-2) Then, Database setup: use the Homebrew package managaer to install the postgresql database.
+After successfully install PostgreSQL, you need to create a database to run SI508-FinalProject files. The name should be **si508_final_project**.
 
 
-  **brew install postgres**
+1) To run the server, please type **pg_ctl -D /usr/local/var/postgres start**
 
 
-3) type the following statement.
+2) Then type **psql** and **createdb si508_final_project** as shown in the display image.
+![Image of psql_createdb](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display_sql_createdb.png)
 
-
-  **pg_ctl -D /usr/local/var/postgres start**
-
-
-  You can also type
-
-
-  **pg_ctl -D /usr/local/var/postgres status**
-
-
-  to see the status of the searver.
-  Also,
-
-
-  **pg_ctl -D /usr/local/var/postgres stop**
-
-
-  to stop running posgreSQL.
-  #While you run this SI508-FinalProject files, you need to start the server by typing
-
-
-  **pg_ctl -D /usr/local/var/postgres start**
-
-
-4) You need to create a database to run SI508-FinalProject files. The name should be "SI508-FinalProject files". Please type
-
-
-**psql**
-
+3) When you type **\l**, you should see a database table as shown.
+![Image of psql_createdb_result](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display_sql_createdb_result.png)
 
  in your terminal, then type
 
@@ -143,7 +113,7 @@ After cloning all necessary files into the same directory, please run final_proj
 You should see the result like this in your terminal.
 
 
-![Image of Yaktocat](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display1.png)
+![Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display1.png)
 
 
 ## What/How to run
