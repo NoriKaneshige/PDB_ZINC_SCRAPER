@@ -9,6 +9,16 @@ This is SI508 Final project README.
 You will be getting data from two sites. **Zinc** and **Protein Data Bank(PDB)**.
 Zinc (http://zinc15.docking.org/) is  a free database of commercially-available compounds for virtual screening. You will be scraping Zinc Substances pages (http://zinc15.docking.org/substances/). PDB (http://www.rcsb.org/) stores data of biological macromolecular structures, mostly protein crystal structures.
 To make the search easier in this SI508 final project, a user can simply run a py file that interacts with the user.
+In this final project, I have two main purposes.
+
+
+**1) I want to get data from Zinc for future virtual screening.**
+
+
+**2) I want to get data from PDB to find proteins that are co-crystalized with short peptides.**
+
+
+**1) is straightforward. But let me explain about 2) little more. Often times, in drug discovery, we want to find a short peptides that can find target proteins. This is often the beginning of drug discovery. However, even though we could search protein data in PDB by our hand one by one to find proteins with short peptides, it is super time consuming. There is no way to quickly find it as of now. So, I wanted to automate this process!**
 
 
 ### Cloning from Github repository
@@ -23,7 +33,7 @@ Please clone all necessary files from NoriKaneshige's repository.
 **git clone https://github.com/NoriKaneshige/SI508-FinalProject.git**
 
 
-4) The files that you really need is the following.
+4) The files that you really need are the following.
 
 
 num of files | File Names
@@ -52,8 +62,7 @@ num | libraries/modules | url
 5 | PostgreSQL | If necessary, please look at Lecture18_Postgres_Database_setup.pdf
 
 
-The libraries/modules in the table need to be installed. Please go to the sources below if you need them.
-You can go to the links below and follow the instructions to install those libraries/modules.
+The libraries/modules in the table need to be installed. Please go to the links above if you need them.
 
 
 **Plotly**: If you don't have a Plotly account, please have **user name** and **api key** to use plotly.
@@ -62,7 +71,7 @@ You can go to the links below and follow the instructions to install those libra
 **PostgreSQL**: the installation of PosgreSQL is bit complicated. If you do not have PostgreSQL installed, please take a close look at Lecture18_Postgres_Database_setup.pdf and follow the instruction step by step!
 
 
-After successfully install PostgreSQL, you need to create a database to run SI508-FinalProject files. The name should be **si508_final_project**.
+After successfully install PostgreSQL, you need to create a database to run SI508-FinalProject files. The name of database should be **si508_final_project**.
 
 
 1) To run the server, please type **pg_ctl -D /usr/local/var/postgres start**
@@ -117,7 +126,7 @@ You should see the result like this in your terminal.
 Here, you can type one of 4 commands shown in the terminal. Let's explore Zinc to get molecule information and do simple query.
 
 
-Please type **Zinc** and hit enter (case insensitive). You will be asked about how many pages you want to scrape in Zinc. Here, you can scrape as many as you want, but **please type 1 for now** because it turned out that scraping takes a lot of time. To demonstrate, I input 3 to scrape 3 pages from Zinc. The result is shown below. In this case, data of page 1 and 2 was already in cache, but the program made a request for page 3. If a compound has complete data to make an instance, the instance will be created and will be stored into Compound table in the database, si508_final_project.
+Please type **Zinc** and hit enter (case insensitive). You will be asked about how many pages you want to scrape in Zinc. Here, you can scrape as many as you want, but **please type 1 for now** because it turned out that scraping takes a lot of time. To demonstrate, I input 3 to scrape 3 pages from Zinc. The result is shown below. In this case, data of page 1 and 2 was already in cache, but the program made a request for page 3. If a compound has complete data to make an instance, new instance will be created and will be stored into Compound table in the database, si508_final_project.
 
 
 ![Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display2.png)
@@ -130,15 +139,15 @@ Here, you have 5 commands to type. Let's type **PlotALL** (case insensitive). If
 
 
 
-If you type **ListAll**, simply names (compounds' Zinc code) will be displayed in the terminal as shown below.
+When you type **ListAll**, names (compounds' Zinc code) will be displayed in the terminal as shown below.
 
 
 [Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display4.png)
 
 
-Now, you can do Query or Look command. Let's do Query to narrow down the compounds.
+Now, you can do Query or Look command. Let's do Query to narrow down the list of compounds.
 
-Please type **Query**, then you will be asked the minimum molecular weight and the maximum molecular weight. For now, please input **200** for the minimum and **250** for the maximum. Only compounds that have molecular weight between 200 and 250 will be shown in your terminal.
+Please type **Query**, then you will be asked about the minimum molecular weight and the maximum molecular weight. For now, please input **200** for the minimum and **250** for the maximum. Only compounds that have molecular weight between 200 and 250 will be shown in your terminal.
 
 
 From here, you can do 3D scatter plot again, or you can look up the individual compound site in Zinc.
@@ -172,7 +181,7 @@ Please run final_project_user_interactive.py as we did in Zinc search above.
 Here, the program will read final_project_human_protein_id.json and create unique url for each protein and get data by using PDB's REST API. PDB has over 40,000 human protein crystal structures. The main purpose of this program is to find proteins that are co-crystalized with short peptides.
 
 
-After typing **PDB**, you will be asked 3 things.
+After typing **PDB**, you will be asked about 3 things.
 
 
 1) the number of proteins: I demonstrate searching 2000 proteins here. Scraping PDB site by using REAT API takes some time, so please DO NOT input huge number! 1000 proteins still need more than couple minutes.
