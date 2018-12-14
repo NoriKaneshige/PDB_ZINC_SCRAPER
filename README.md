@@ -55,29 +55,62 @@ num | libraries/modules | url
 The libraries/modules in the table need to be installed. Please go to the sources below if you need them.
 You can go to the links below and follow the instructions to install those libraries/modules.
 
-Beautiful Soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+
+**Plotly**: If you don't have a Plotly account, please have **user name** and **api key** to use plotly.
 
 
-Plotly: https://plot.ly/python/getting-started/
-If you don't have a Plotly account, please have user name and api key to use plotly.
-
-Psycopg: http://initd.org/psycopg/docs/install.html
-
-
-Numpy: https://docs.scipy.org/doc/numpy-1.15.0/user/install.html
-
-
-PostgreSQL: the installation of PosgreSQL might be little bit complicated. Please follow the instructions.
+**PostgreSQL**: the installation of PosgreSQL might be little bit complicated. Please follow the instructions.
 1) First, get homebrew. Please go to this link: https://brew.sh/
-Copy and paste this line onto your terminal: /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com_/Homebrew/install/master/install)"
+Copy and paste this line onto your terminal:
+
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com_/Homebrew/install/master/install)"
+
+
 2) Then, Database setup: use the Homebrew package managaer to install the postgresql database.
+
+
   **brew install postgres**
+
+
 3) type the following statement.
+
+
   **pg_ctl -D /usr/local/var/postgres start**
-  You can also type **pg_ctl -D /usr/local/var/postgres status** to see the status of the searver.
-  Also, **pg_ctl -D /usr/local/var/postgres stop** to stop running posgreSQL.
-  #While you run this SI508-FinalProject files, you need to start the server by typing **pg_ctl -D /usr/local/var/postgres start**
-4) You need to create a database to run SI508-FinalProject files. The name should be "SI508-FinalProject files". Please type **psql** in your terminal, then type **createdb SI508-FinalProject files** to create a database.
+
+
+  You can also type
+
+
+  **pg_ctl -D /usr/local/var/postgres status**
+
+
+  to see the status of the searver.
+  Also,
+
+
+  **pg_ctl -D /usr/local/var/postgres stop**
+
+
+  to stop running posgreSQL.
+  #While you run this SI508-FinalProject files, you need to start the server by typing
+
+
+  **pg_ctl -D /usr/local/var/postgres start**
+
+
+4) You need to create a database to run SI508-FinalProject files. The name should be "SI508-FinalProject files". Please type
+
+
+**psql**
+
+
+ in your terminal, then type
+
+
+ **createdb SI508-FinalProject files**
+
+
+ to create a database.
 
 
 ### Other libraries/modules
