@@ -245,6 +245,4 @@ points | requirements | comments
 100 | Errors must be handled | The program is interactive with users and potential errors by user inputs are handled.
 450 | Second level requirements | BeautifulSoup, PostgreSQL, Onject Inheritance, Generator Expression are used.
 400 | Third level requirements | Visualization by Plotly and PostgreSQL are used. Also, this in an interactive project.
------------- | ---------------------------------------- | --------------------------------------------------------------------------
-total
-400 |  | 
+total | 4000 | This is the end of README
