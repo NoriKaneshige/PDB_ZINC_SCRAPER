@@ -18,7 +18,11 @@ Please clone all necessary files from NoriKaneshige's repository.
 1) Please go to this link: https://github.com/NoriKaneshige/SI508-FinalProject
 2) Please use the repository adress: https://github.com/NoriKaneshige/SI508-FinalProject.git
 3) Please open your terminal and type the following.
-git clone https://github.com/NoriKaneshige/SI508-FinalProject.git
+
+
+**git clone https://github.com/NoriKaneshige/SI508-FinalProject.git**
+
+
 4) The files that you really need is the following.
 
 
@@ -38,7 +42,17 @@ num of files | File Names
 
 ### Prerequisites/Installing/Database_SetUp
 
-1) Beautiful Soup, 2) Plotly, 3)Psycopg, 4) Numpy, 5) PostgreSQL need to be installed. Please go to the sources below if you need them.
+
+num | libraries/modules | url
+------------ | -------------------- | ----------------------------------------------------
+1 | Beautiful Soup | https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+2 | Plotly | https://plot.ly/python/getting-started/
+3 | Psycopg | http://initd.org/psycopg/docs/install.html
+4 | Numpy | https://docs.scipy.org/doc/numpy-1.15.0/user/install.html
+5 | PostgreSQL | More details below
+
+
+The libraries/modules in the table need to be installed. Please go to the sources below if you need them.
 You can go to the links below and follow the instructions to install those libraries/modules.
 
 Beautiful Soup: https://www.crummy.com/software/BeautifulSoup/bs4/doc/
