@@ -23,8 +23,8 @@ while play_again == 'y':
 					print(el.name)
 				command_input_zinc_plotall_listall = input('\n\nThose are commands you can type now! \n\n*Query\n*Look <Zinc_ID> - e.g. Look Zinc10 zinc15 zinc75\n*exit\n\nPlease input a command here: ')
 				if command_input_zinc_plotall_listall.lower() == 'query':
-					mw_lowest_input = input('Please input the lowest molecular weight here: ')
-					mw_highest_input = input('Please input the highest molecular weight here: ')
+					mw_lowest_input = input('Please input the lowest molecular weight here e.g. 200: ')
+					mw_highest_input = input('Please input the highest molecular weight here e.g. 250: ')
 					try:
 						cur.execute("SELECT Name FROM Compounds WHERE (Molecular_Weight >= {}) AND (Molecular_Weight <= {})".format(mw_lowest_input,mw_highest_input))
 						pass
@@ -101,8 +101,8 @@ while play_again == 'y':
 					print('Sorry! Please start over again and type a valid input!')
 					break
 			elif command_input_zinc_plotall.lower() == 'query':
-				mw_lowest_input = input('Please input the lowest molecular weight here: ')
-				mw_highest_input = input('Please input the highest molecular weight here: ')
+				mw_lowest_input = input('Please input the lowest molecular weight here e.g. 200: ')
+				mw_highest_input = input('Please input the highest molecular weight here e.g. 250: ')
 				cur.execute("SELECT Name FROM Compounds WHERE (Molecular_Weight >= {}) AND (Molecular_Weight <= {})".format(mw_lowest_input,mw_highest_input))
 				id_lst = []
 				print('Molecules whose molecular weight is between {} and {}!'.format(mw_lowest_input,mw_highest_input))
@@ -160,8 +160,8 @@ while play_again == 'y':
 				plot_compounds_plotly(inst_lst)
 				command_input_zinc_listall_plotall = input('\n\nThose are commands you can type now! \n\n*Query\n*Look <Zinc_ID> - e.g. Look Zinc10 zinc15 zinc75\n*exit\n\nPlease input a command here: ')
 				if command_input_zinc_listall_plotall.lower() == 'query':
-					mw_lowest_input = input('Please input the lowest molecular weight here: ')
-					mw_highest_input = input('Please input the highest molecular weight here: ')
+					mw_lowest_input = input('Please input the lowest molecular weight here e.g. 200: ')
+					mw_highest_input = input('Please input the highest molecular weight here e.g. 250: ')
 					cur.execute("SELECT Name FROM Compounds WHERE (Molecular_Weight >= {}) AND (Molecular_Weight <= {})".format(mw_lowest_input,mw_highest_input))
 					id_lst = []
 					print('Molecules whose molecular weight is between {} and {}!'.format(mw_lowest_input,mw_highest_input))
@@ -232,8 +232,8 @@ while play_again == 'y':
 					break
 
 			elif command_input_zinc_listall.lower() == 'query':
-				mw_lowest_input = input('Please input the lowest molecular weight here: ')
-				mw_highest_input = input('Please input the highest molecular weight here: ')
+				mw_lowest_input = input('Please input the lowest molecular weight here e.g. 200: ')
+				mw_highest_input = input('Please input the highest molecular weight here e.g. 250: ')
 				cur.execute("SELECT Name FROM Compounds WHERE (Molecular_Weight >= {}) AND (Molecular_Weight <= {})".format(mw_lowest_input,mw_highest_input))
 				id_lst = []
 				print('Molecules whose molecular weight is between {} and {}!'.format(mw_lowest_input,mw_highest_input))
@@ -298,8 +298,8 @@ while play_again == 'y':
 				break
 
 		elif command_input_zinc.lower() == 'query':
-			mw_lowest_input = input('Please input the lowest molecular weight here: ')
-			mw_highest_input = input('Please input the highest molecular weight here: ')
+			mw_lowest_input = input('Please input the lowest molecular weight here e.g. 200: ')
+			mw_highest_input = input('Please input the highest molecular weight here e.g. 250: ')
 			try:
 				cur.execute("SELECT Name FROM Compounds WHERE (Molecular_Weight >= {}) AND (Molecular_Weight <= {})".format(mw_lowest_input,mw_highest_input))
 			except Exception as inst:

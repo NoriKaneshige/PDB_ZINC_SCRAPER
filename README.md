@@ -134,10 +134,16 @@ You need to replace two things in py files with your secret information. So plea
 **e.g. username='YOUR_PLOTLY_USER_NAME', api_key='YOUR_PLOTLY_API_KEY'**
 
 
-## Running the tests
+## Instructuions about how to run the project!
 
 
-Please run 
+After cloning all necessary files into the same directory, please run final_project_user_interactive.py
+
+
+You should see the result like this in your terminal.
+
+
+![Image of Yaktocat](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display1.png)
 
 
 ## What/How to run
