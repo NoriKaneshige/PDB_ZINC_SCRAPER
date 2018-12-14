@@ -157,6 +157,8 @@ I typed **zinc** and input **3** to scrape 3 zinc pages (all data in the cache t
 
 
 [Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display6.png)
+
+
 [Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display7.png)
 
 
