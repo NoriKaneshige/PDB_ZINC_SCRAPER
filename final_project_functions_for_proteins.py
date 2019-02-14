@@ -4,6 +4,7 @@ import requests
 from advanced_expiry_caching import *
 from final_project_class import *
 import json
+import time
 
 CACHE_FILE = "final_project_cache.json"
 
@@ -37,6 +38,7 @@ def get_human_pdb_protein_ids():
 #print(get_human_pdb_protein_ids())
 
 def get_protein_with_short_peptide(num_of_protein_to_check,length_of_short_peptide,resolution_limit):
+	request_counter = 0
 	protein_inst_list = []
 	c1 = Cache(CACHE_FILE)
 	base_url = 'https://www.rcsb.org/pdb/rest/describeMol?structureId='
@@ -50,6 +52,7 @@ def get_protein_with_short_peptide(num_of_protein_to_check,length_of_short_pepti
 		else:
 			#print("\n---------------------------------------------\nData of {} NOT in cache, so making requests!\n---------------------------------------------".format(id_el))
 			resp = requests.get(unique_url).text
+			time.sleep(0.5)
 			#obj = json.loads(resp)
 			#Here, I did not make json data, just stored text data, is this OK?
 			c1.cache_diction[unique_url] = resp
@@ -64,6 +67,7 @@ def get_protein_with_short_peptide(num_of_protein_to_check,length_of_short_pepti
 		else:
 			#print("\n---------------------------------------------\nResolution Data of {} NOT in cache, so making requests!\n---------------------------------------------".format(id_el))
 			resp_res = requests.get(unique_url_for_resolution).text
+			time.sleep(0.5)
 			#obj = json.loads(resp)
 			#Here, I did not make json data, just stored text data, is this OK?
 			c1.cache_diction[unique_url_for_resolution] = resp_res
@@ -72,6 +76,8 @@ def get_protein_with_short_peptide(num_of_protein_to_check,length_of_short_pepti
 
 		try:
 			polymer_description = soup.find('macromolecule')['name']
+			request_counter += 1
+			print('{}:{}:{}'.format(request_counter, id_el, polymer_description))
 			resolution = soup_res.find('pdb')['resolution']
 			peptide_length_lst = []
 			for el in molecular_weight_and_length_inst_lst:
