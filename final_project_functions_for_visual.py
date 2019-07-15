@@ -1,6 +1,6 @@
 """for plotly,dash"""
 import plotly
-plotly.tools.set_credentials_file(username='nori-kaneshige', api_key='0fNsdJGLmxNwbfBL0l8f')
+plotly.tools.set_credentials_file(username= USER_NAME, api_key= API_KEY)
 import plotly.plotly as py
 import plotly.graph_objs as go
 """Setting numpy"""
