@@ -236,7 +236,7 @@ I wrote 5 test classes.
 
 ## Check List of this project fulfilled
 
-# | list | comments
+Num | list | comments
 ------------ | ---------------------------------------- | --------------------------------------------------------------------------
 1 | All files in repository | All files are stored in https://github.com/NoriKaneshige/SI508-FinalProject
 2 | This project code must run | My code works without any errors!
