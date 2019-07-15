@@ -234,24 +234,23 @@ I wrote 5 test classes.
 5) test for functions of SQL
 
 
-## List of final project requirements fulfilled
+## Check List of this project fulfilled
 
-points | requirements | comments
+# | list | comments
 ------------ | ---------------------------------------- | --------------------------------------------------------------------------
-100 | All files in repository | All files are stored in https://github.com/NoriKaneshige/SI508-FinalProject
-200 | Your project code must run | My code works without any errors!
-300 | README | Clearly formated with markdown. Necessary componends and many example outputs are included.
-100 | Must rely on Python | Python was used as the main language. SQL is also used.
-400 | TWO data sources | PDB API, Zinc pages, csv data, json data
-100 | One data sources from internet | PDB data and Zinc data are from internet
-200 | Caching | Caching was implemented. Please look at files.
-300 | Process data from each source | Data from PDB, Zinc, csv file, and json file are processed to take necessary data.
-150 | Import and use functionality | BeautifulSoup, Plotly, Psycopg, Numpy, PostgreSQL, datetime, webbrowser etc
-400 | test suite | 5 classes and 10 test methods
-100 | Result product | 3D scatter plot by Plotly, also the program is interactive with users. Users can also do query after storing data into local database with easy and interactive manner.
-600 | 2 classed and instances | 1 parent class and 2 subclasses that inherit the parent class. Instance are created.
-100 | An example of your output  | Many example outputs are included in the repository
-100 | Errors must be handled | The program is interactive with users and potential errors by user inputs are handled.
-450 | Second level requirements | BeautifulSoup, PostgreSQL, Object Inheritance, Generator Expression are used. For example, please look at line 42 of final_project_user_interactive.py where you can see generator expression.
-400 | Third level requirements | Visualization by Plotly and PostgreSQL are used. Also, this in an interactive project.
-total | 4000 | This is the end of README
+1 | All files in repository | All files are stored in https://github.com/NoriKaneshige/SI508-FinalProject
+2 | This project code must run | My code works without any errors!
+3 | README | Clearly formated with markdown. Necessary componends and many example outputs are included.
+4 | Must rely on Python | Python was used as the main language. SQL is also used.
+5 | TWO data sources | PDB API, Zinc pages, csv data, json data
+6 | One data sources from internet | PDB data and Zinc data are from internet
+7 | Caching | Caching was implemented. Please look at files.
+8 | Process data from each source | Data from PDB, Zinc, csv file, and json file are processed to take necessary data.
+9 | Import and use functionality | BeautifulSoup, Plotly, Psycopg, Numpy, PostgreSQL, datetime, webbrowser etc
+10 | test suite | 5 classes and 10 test methods
+11 | Result product | 3D scatter plot by Plotly, also the program is interactive with users. Users can also do query after storing data into local database with easy and interactive manner.
+12 | 2 classed and instances | 1 parent class and 2 subclasses that inherit the parent class. Instance are created.
+13 | An example of your output  | Many example outputs are included in the repository
+14 | Errors must be handled | The program is interactive with users and potential errors by user inputs are handled.
+15 | Second level requirements | BeautifulSoup, PostgreSQL, Object Inheritance, Generator Expression are used. For example, please look at line 42 of final_project_user_interactive.py where you can see generator expression.
+16 | Third level requirements | Visualization by Plotly and PostgreSQL are used. Also, this in an interactive project.
