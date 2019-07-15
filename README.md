@@ -25,12 +25,12 @@ In this final project, I have two main purposes.
 
 
 Please clone all necessary files from NoriKaneshige's repository.
-1) Please go to this link: https://github.com/NoriKaneshige/SI508-FinalProject
-2) Please use the repository adress: https://github.com/NoriKaneshige/SI508-FinalProject.git
+1) Please go to this link: https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER
+2) Please use the repository adress: https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER.git
 3) Please open your terminal and type the following.
 
 
-**git clone https://github.com/NoriKaneshige/SI508-FinalProject.git**
+**git clone https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER.git**
 
 
 4) The files that you really need are the following.
@@ -120,7 +120,7 @@ After cloning all necessary files into the same directory, please run final_proj
 You should see the result like this in your terminal.
 
 
-![Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display1.png)
+![Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display1.png)
 
 
 Here, you can type one of 4 commands shown in the terminal. Let's explore Zinc to get molecule information and do simple query.
@@ -129,20 +129,20 @@ Here, you can type one of 4 commands shown in the terminal. Let's explore Zinc t
 Please type **Zinc** and hit enter (case insensitive). You will be asked about how many pages you want to scrape in Zinc. Here, you can scrape as many as you want, but **please type 1 for now** because it turned out that scraping takes a lot of time. To demonstrate, I input 3 to scrape 3 pages from Zinc. The result is shown below. In this case, data of page 1 and 2 was already in cache, but the program made a request for page 3. If a compound has complete data to make an instance, new instance will be created and will be stored into Compound table in the database, si508_final_project.
 
 
-![Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display2.png)
+![Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display2.png)
 
 
 Here, you have 5 commands to type. Let's type **PlotALL** (case insensitive). If you correctly replace plotly username and plotly aip key in final_project_functions_for_visual, you will be opening your plotly site and a 3D scatter plot will show up automatically as shown below. Compound instances are 3D scatter plotted here based on properties of compounds.
 
 
-![Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display3.png)
+![Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display3.png)
 
 
 
 When you type **ListAll**, names (compounds' Zinc code) will be displayed in the terminal as shown below.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display4.png)
+[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display4.png)
 
 
 Now, you can do Query or Look command. Let's do Query to narrow down the list of compounds.
@@ -154,7 +154,7 @@ From here, you can do 3D scatter plot again, or you can look up the individual c
 Let's try it. Here, you can choose as many compounds as you want. For example, please type **Look zinc10 zinc99 zinc136 zinc215 zinc401**. The websites of all of those zinc compounds will be automatically opened as shown below.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display5.png)
+[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display5.png)
 
 
 Basically this is it about Zinc search. I want to mention one more thing about Zinc search.
@@ -165,10 +165,10 @@ Let me demonstrate here.
 I typed **zinc** and input **3** to scrape 3 zinc pages (all data in the cache this time because I scraped once before). Then I typed **ZincPDB** and hit enter. Here, the program opens PDB_ligands.csv and find any matches between zinc compounds just I got and PDB compounds by using SMILES. The result looks like this in this case. I found that PDB compound that has 2DL (PDB compound ID). You can simply go to PDB site and type 2DL to look up this compound as shown below.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display6.png)
+[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display6.png)
 
 
-[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display7.png)
+[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display7.png)
 
 
 
@@ -192,19 +192,19 @@ After typing **PDB**, you will be asked about 3 things.
 Here, I found 43 proteins that are co-crystalized with short peptides that have less than equal 10 peptide length as shown blow.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display8.png)
+[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display8.png)
 
 
 Now, you can do **ListALL** to see PDB IDs of those proteins.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display9.png)
+[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display9.png)
 
 
 Let's do **Query** next. Those 43 protein instances are stored in tables, Proteins and Ptoteins2 that have a relationship each other in sql database called si508_final_project. You can further limit the maximum length of short peptide. Let's input 5, for example. The result looks like the one below.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display10.png)
+[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display10.png)
 
 
 
@@ -212,7 +212,7 @@ Here you can see not only PDB ID, but also the descriptions of proteins. Dependi
 The result is show below.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display11.png)
+[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display11.png)
 
 
 ## How to run unittest
@@ -222,7 +222,7 @@ You can simply run **final_project_test_suites.py**
 
 
 The result should be like this.
-[Image of terminal](https://github.com/NoriKaneshige/SI508-FinalProject/blob/master/display_unittest.png)
+[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display_unittest.png)
 
 
 I wrote 5 test classes.
@@ -238,7 +238,7 @@ I wrote 5 test classes.
 
 Num | list | comments
 ------------ | ---------------------------------------- | --------------------------------------------------------------------------
-1 | All files in repository | All files are stored in https://github.com/NoriKaneshige/SI508-FinalProject
+1 | All files in repository | All files are stored in https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER
 2 | This project code must run | My code works without any errors!
 3 | README | Clearly formated with markdown. Necessary componends and many example outputs are included.
 4 | Must rely on Python | Python was used as the main language. SQL is also used.
