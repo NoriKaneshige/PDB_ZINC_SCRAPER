@@ -142,7 +142,7 @@ Here, you have 5 commands to type. Let's type **PlotALL** (case insensitive). If
 When you type **ListAll**, names (compounds' Zinc code) will be displayed in the terminal as shown below.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display4.png)
+![Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display4.png)
 
 
 Now, you can do Query or Look command. Let's do Query to narrow down the list of compounds.
@@ -154,7 +154,7 @@ From here, you can do 3D scatter plot again, or you can look up the individual c
 Let's try it. Here, you can choose as many compounds as you want. For example, please type **Look zinc10 zinc99 zinc136 zinc215 zinc401**. The websites of all of those zinc compounds will be automatically opened as shown below.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display5.png)
+![Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display5.png)
 
 
 Basically this is it about Zinc search. I want to mention one more thing about Zinc search.
@@ -165,10 +165,10 @@ Let me demonstrate here.
 I typed **zinc** and input **3** to scrape 3 zinc pages (all data in the cache this time because I scraped once before). Then I typed **ZincPDB** and hit enter. Here, the program opens PDB_ligands.csv and find any matches between zinc compounds just I got and PDB compounds by using SMILES. The result looks like this in this case. I found that PDB compound that has 2DL (PDB compound ID). You can simply go to PDB site and type 2DL to look up this compound as shown below.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display6.png)
+![Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display6.png)
 
 
-[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display7.png)
+![Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display7.png)
 
 
 
@@ -192,19 +192,19 @@ After typing **PDB**, you will be asked about 3 things.
 Here, I found 43 proteins that are co-crystalized with short peptides that have less than equal 10 peptide length as shown blow.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display8.png)
+![Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display8.png)
 
 
 Now, you can do **ListALL** to see PDB IDs of those proteins.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display9.png)
+![Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display9.png)
 
 
 Let's do **Query** next. Those 43 protein instances are stored in tables, Proteins and Ptoteins2 that have a relationship each other in sql database called si508_final_project. You can further limit the maximum length of short peptide. Let's input 5, for example. The result looks like the one below.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display10.png)
+![Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display10.png)
 
 
 
@@ -212,7 +212,7 @@ Here you can see not only PDB ID, but also the descriptions of proteins. Dependi
 The result is show below.
 
 
-[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display11.png)
+![Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display11.png)
 
 
 ## How to run unittest
@@ -222,7 +222,7 @@ You can simply run **final_project_test_suites.py**
 
 
 The result should be like this.
-[Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display_unittest.png)
+![Image of terminal](https://github.com/NoriKaneshige/PDB_ZINC_SCRAPER/blob/master/display_unittest.png)
 
 
 I wrote 5 test classes.
